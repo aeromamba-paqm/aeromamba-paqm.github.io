@@ -1,0 +1,53 @@
+/* You can copy your existing styles from index.css here */
+/* For example: */
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+  font-weight: 700;
+}
+
+.publication-authors {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+/* --- New styles for improved UX and layout --- */
+
+/* Responsive Audio Player */
+.audio-player {
+  width: 100%;
+  max-width: 250px; /* Max width on larger screens */
+  min-width: 150px; /* Min width on smaller screens */
+  height: 40px;
+}
+
+/* Make table headers more readable */
+.table thead th {
+    vertical-align: middle;
+}
+
+/* Styles for the collapsible metadata section */
+details > summary {
+  cursor: pointer;
+  list-style: none; /* Removes the default triangle */
+}
+
+details > summary::-webkit-details-marker {
+  display: none; /* Also for removing the default triangle */
+}
+
+details > summary::before {
+  content: '+'; /* Use + and - for expand/collapse icons */
+  font-family: monospace;
+  font-size: 1.5rem;
+  margin-right: 10px;
+  display: inline-block;
+  vertical-align: middle;
+  transition: transform 0.2s;
+}
+
+details[open] > summary::before {
+  transform: rotate(45deg);
+}
+
+.pt-4 {
+  padding-top: 1.5rem;
+}
