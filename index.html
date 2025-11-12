@@ -96,7 +96,7 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                Audio super-resolution is commonly seen as the task of enhancing low-bitrate audio signals by creating missing high-frequency content. This work proposes AEROMamba-PAQM, an efficient variant of the AERO super-resolution architecture where attention and LSTM layers are replaced by the Mamba state-space model, and which incorporates a newly developed differentiable perceptual loss derived from the Perceptual Audio Quality Measure (PAQM). During training, the architecture requires approximately 2–4x less GPU memory than the baseline; during inference, it achieves a 14x speedup while using only one-fifth of the GPU memory. When upsampling both a piano dataset and MUSDB18 from 11.025 kHz to 44.1 kHz, subjective listening tests show that AEROMamba-PAQM outperforms AERO by 15\% in perceived quality scores. To address the broader problem of improving audio that has been highly compressed by lossy coding, it is further proposed AEROMamba-PAQM++, which applies the same framework but replaces STFT reconstruction losses with the PAQM loss, specifically to enhance MP3 encoded audio at 32 kbps. In listening evaluations, AEROMamba-PAQM++ achieves 52\% higher quality rating than AEROMamba-PAQM when restoring compressed audio. These results demonstrate that PAQM-driven training coupled with lightweight state-space modeling yields high perceptual quality and computational efficiency in both band-limited and compressed audio scenarios.
+                Audio super-resolution is commonly seen as the task of enhancing low-bitrate audio signals by creating missing high-frequency content. This work proposes AEROMamba-PAQM, an efficient variant of the AERO super-resolution architecture where attention and LSTM layers are replaced by the Mamba state-space model, and which incorporates a newly developed differentiable perceptual loss derived from the Perceptual Audio Quality Measure (PAQM). During training, the architecture requires approximately 2–4x less GPU memory than the baseline; during inference, it achieves a 14x speedup while using only one-fifth of the GPU memory. When upsampling both a piano dataset and MUSDB18 from 11.025 kHz to 44.1 kHz, subjective listening tests show that AEROMamba-PAQM outperforms AERO by 15% in perceived quality scores. To address the broader problem of improving audio that has been highly compressed by lossy coding, it is further proposed AEROMamba-PAQM++, which applies the same framework but replaces STFT reconstruction losses with the PAQM loss, specifically to enhance MP3 encoded audio at 32 kbps. In listening evaluations, AEROMamba-PAQM++ achieves 52% higher quality rating than AEROMamba-PAQM when restoring compressed audio. These results demonstrate that PAQM-driven training coupled with lightweight state-space modeling yields high perceptual quality and computational efficiency in both band-limited and compressed audio scenarios.
               </p>
             </div>
           </div>
@@ -423,7 +423,7 @@
           <p class="subtitle is-6 has-text-centered">Tracks upsampled from 11.025kHz to 44.1kHz</p>
           <div class="table-container">
             <table class="table is-fullwidth has-text-centered is-vcentered">
-              <caption>Audio samples comparing Low-Res, High-Res (Ground Truth), AERO, and AEROMamba.</caption>
+              <caption>Audio samples comparing Low-Res, High-Res (Ground Truth), AERO, AEROMamba, and AEROMamba-PAQM.</caption>
               <thead>
                 <tr>
                   <th class="has-text-left" scope="col">Track</th>
@@ -431,6 +431,7 @@
                   <th scope="col">Original (High-Res)<br><small>44.1 kHz</small></th>
                   <th scope="col">AERO<br><small>11.025 &rarr; 44.1 kHz</small></th>
                   <th scope="col">AEROMamba<br><small>11.025 &rarr; 44.1 kHz</small></th>
+                  <th scope="col">AEROMamba-PAQM<br><small>11.025 &rarr; 44.1 kHz</small></th>
                 </tr>
               </thead>
               <tbody>
@@ -440,6 +441,7 @@
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/hr/ref459.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aero/deg459.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba/deg459.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba-paqm/deg459.wav" type="audio/wav"></audio></td>
                 </tr>
                 <tr>
                   <th scope="row" class="has-text-left">480</th>
@@ -447,6 +449,7 @@
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/hr/ref480.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aero/deg480.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba/deg480.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba-paqm/deg480.wav" type="audio/wav"></audio></td>
                 </tr>
                 <tr>
                   <th scope="row" class="has-text-left">826</th>
@@ -454,6 +457,7 @@
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/hr/ref826.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aero/deg826.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba/deg826.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba-paqm/deg826.wav" type="audio/wav"></audio></td>
                 </tr>
                 <tr>
                   <th scope="row" class="has-text-left">625</th>
@@ -461,6 +465,7 @@
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/hr/ref625.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aero/deg625.wav" type="audio/wav"></audio></td>
                   <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba/deg625.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/musdb/aeromamba-paqm/deg625.wav" type="audio/wav"></audio></td>
                 </tr>
               </tbody>
             </table>
