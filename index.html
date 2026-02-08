@@ -31,6 +31,15 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="static/js/fontawesome.all.min.js"></script>
   <script defer src="static/js/main.js"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      }
+    };
+  </script>
 </head>
 
 <body>
@@ -40,7 +49,7 @@
         <div class="container is-max-desktop">
           <div class="columns is-centered">
             <div class="column has-text-centered">
-              <h1 class="title is-1 publication-title">Efficient Audio Super-Resolution with a Differentiable Psychoacoustic Loss</h1>
+              <h1 class="title is-1 publication-title">Efficient Audio Enhancement with a Differentiable Psychoacoustic Loss</h1>
               
               <figure class="image is-inline-block" style="max-width: 256px; margin-top: 1rem; margin-bottom: 1rem;">
                 <img src="static/images/icon_tp.png" alt="AEROMamba project logo">
@@ -80,15 +89,6 @@
       </div>
     </section>
 
-    <section class="hero is-light is-small">
-      <div class="hero-body">
-        <div class="container is-max-desktop">
-          <p class="has-text-centered">
-          </p>
-        </div>
-      </div>
-    </section>
-
     <section class="section">
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
@@ -96,7 +96,7 @@
             <h2 class="title is-3">Abstract</h2>
             <div class="content has-text-justified">
               <p>
-                Audio super-resolution is commonly seen as the task of enhancing low-bitrate audio signals by creating missing high-frequency content. This work proposes AEROMamba-PAQM, an efficient variant of the AERO super-resolution architecture where attention and LSTM layers are replaced by the Mamba state-space model, and which incorporates a newly developed differentiable perceptual loss derived from the Perceptual Audio Quality Measure (PAQM). During training, the architecture requires approximately 2–4x less GPU memory than the baseline; during inference, it achieves a 14x speedup while using only one-fifth of the GPU memory. When upsampling both a piano dataset and MUSDB18 from 11.025 kHz to 44.1 kHz, subjective listening tests show that AEROMamba-PAQM outperforms AERO by 15% in perceived quality scores. To address the broader problem of improving audio that has been highly compressed by lossy coding, it is further proposed AEROMamba-PAQM++, which applies the same framework but replaces STFT reconstruction losses with the PAQM loss, specifically to enhance MP3 encoded audio at 32 kbps. In listening evaluations, AEROMamba-PAQM++ achieves 52% higher quality rating than AEROMamba-PAQM when restoring compressed audio. These results demonstrate that PAQM-driven training coupled with lightweight state-space modeling yields high perceptual quality and computational efficiency in both band-limited and compressed audio scenarios.
+                Audio enhancement consists of improving the perceived quality of audio signals. Initially, with the aim of addressing bandwidth extension, this work proposes $\textrm{AEROMamba}_{\textrm{P}}$, an efficient variant of the $\textrm{AERO}$ super-resolution architecture where attention and LSTM layers are replaced by the Mamba state-space model, and which incorporates a newly developed differentiable perceptual loss derived from the Perceptual Audio Quality Measure (PAQM). During training, the architecture requires approximately 2–4x less GPU memory than the baseline; during inference, it achieves a 14x speedup while using only one-fifth of the GPU memory. When upsampling both a piano dataset and MUSDB18 from 11.025 kHz to 44.1 kHz, subjective listening tests show that $\textrm{AEROMamba}_{\textrm{P}}$ outperforms $\textrm{AERO}$ by 15% in perceived quality scores. Next, to handle the enhancement of audio signals that have been highly compressed by lossy coding, it is further proposed $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$, which applies the same framework but replaces STFT reconstruction losses with the PAQM loss, specifically to enhance MP3 encoded audio at 32 kbps. In listening evaluations, $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$ achieves 52% higher quality rating than $\textrm{AEROMamba}_{\textrm{P}}$ when restoring compressed audio. These results demonstrate that PAQM-driven training coupled with lightweight state-space modeling yields high perceptual quality and computational efficiency in both band-limited and compressed audio scenarios.
               </p>
             </div>
           </div>
@@ -129,31 +129,31 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">Low-Resolution</th>
+                          <th scope="row">$\textrm{Low-Resolution}$</th>
                           <td>1.82</td>
                           <td>3.98</td>
                           <td>38.22</td>
                         </tr>
                         <tr>
-                          <th scope="row">AERO</th>
+                          <th scope="row">$\textrm{AERO}$</th>
                           <td>2.90</td>
                           <td>1.34</td>
                           <td>60.03</td>
                         </tr>
                         <tr>
-                          <th scope="row">AEROMamba</th>
+                          <th scope="row">$\textrm{AEROMamba}$</th>
                           <td>2.93</td>
                           <td>1.23</td>
                           <td>66.47</td>
                         </tr>
                         <tr>
-                          <th scope="row">AEROMamba-PAQM</th>
+                          <th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$</th>
                           <td>3.04</td>
                           <td>1.19</td>
                           <td><b>79.26</b></td>
                         </tr>
                         <tr>
-                          <th scope="row">AudioSR</th>
+                          <th scope="row">$\textrm{AudioSR}$</th>
                           <td>3.01</td>
                           <td>-</td>
                           <td>-</td>
@@ -178,25 +178,25 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <th scope="row">Low-Resolution</th>
+                          <th scope="row">$\textrm{Low-Resolution}$</th>
                           <td>4.36</td>
                           <td>1.09</td>
                           <td>72.92</td>
                         </tr>
                         <tr>
-                          <th scope="row">AERO</th>
+                          <th scope="row">$\textrm{AERO}$</th>
                           <td>4.38</td>
                           <td>0.99</td>
                           <td>76.89</td>
                         </tr>
                         <tr>
-                          <th scope="row">AEROMamba-HQ</th>
+                          <th scope="row">$\textrm{AEROMamba}-{\textrm{HQ}}$</th>
                           <td>4.38</td>
                           <td>1.00</td>
                           <td><b>84.41</b></td>
                         </tr>
                         <tr>
-                          <th scope="row">AEROMamba-PAQM-HQ</th>
+                          <th scope="row">$\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th>
                           <td>4.41</td>
                           <td>0.90</td>
                           <td>78.76</td>
@@ -204,7 +204,7 @@
                       </tbody>
                     </table>
                   </div>
-                  <p class="is-size-7 has-text-left">Models labeled with `-HQ` were trained on PianoEval-HQ.</p>
+                  <p class="is-size-7 has-text-left">Models labeled with $\textrm{-HQ}$ were trained on PianoEval-HQ.</p>
                 </div>
               </div>
 
@@ -222,13 +222,13 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row">AERO</th>
+                      <th scope="row">$\textrm{AERO}$</th>
                       <td>17091</td>
                       <td>1.246</td>
                       <td>19,432,958</td>
                     </tr>
                     <tr>
-                      <th scope="row">AEROMamba</th>
+                      <th scope="row">$\textrm{AEROMamba}$</th>
                       <td>3000</td>
                       <td>0.087</td>
                       <td>20,964,190</td>
@@ -244,7 +244,7 @@
                   <figure class="image">
                     <img src="static/images/subjective_wav_musdb.png" alt="Violin plot of subjective scores for the MUSDB bandlimited experiment.">
                     <figcaption class="is-size-7 pt-2">
-                      (A) Low Res. (B) AERO (C) AEROMamba (D) AEROMamba-PAQM
+                      (A) $\textrm{Low-Resolution}$. (B) $\textrm{AERO}$ (C) $\textrm{AEROMamba}$ (D) $\textrm{AEROMamba}_{\textrm{P}}$
                     </figcaption>
                   </figure>
                 </div>
@@ -253,7 +253,7 @@
                   <figure class="image">
                     <img src="static/images/subjective_wav_piano.png" alt="Violin plot of subjective scores for the PianoEval bandlimited experiment.">
                     <figcaption class="is-size-7 pt-2">
-                      (A) Low Res. (B) AERO (C) AEROMamba-HQ (D) AEROMamba-PAQM-HQ
+                      (A) $\textrm{Low-Resolution}$. (B) $\textrm{AERO}$ (C) $\textrm{AEROMamba}-{\textrm{HQ}}$ (D) $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$
                     </figcaption>
                   </figure>
                 </div>
@@ -276,30 +276,12 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba-PAQM</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AERO</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba vs. AEROMamba-PAQM</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba vs. AERO</th>
-                              <td>0.0089</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba-PAQM vs. AERO</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AERO}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AERO}$</th><td>0.0089</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AERO}$</th><td>&lt; 0.0001</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -316,30 +298,12 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba-HQ</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba-PAQM-HQ</th>
-                              <td>0.0587</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AERO</th>
-                              <td>0.3399</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba-HQ vs. AEROMamba-PAQM-HQ</th>
-                              <td>0.0101</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba-HQ vs. AERO</th>
-                              <td>0.0003</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba-PAQM-HQ vs. AERO</th>
-                              <td>0.2975</td>
-                            </tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}-{\textrm{HQ}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>0.0587</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AERO}$</th><td>0.3399</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}-{\textrm{HQ}}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>0.0101</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}-{\textrm{HQ}}$ vs. $\textrm{AERO}$</th><td>0.0003</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$ vs. $\textrm{AERO}$</th><td>0.2975</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -358,13 +322,13 @@
                             <tr><th scope="col">Comparison</th><th scope="col">p-value</th></tr>
                           </thead>
                           <tbody>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-PAQM</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AERO</th><td>0.0007</td></tr>
-                            <tr><th scope="row">AEROMamba-PAQM vs. AERO</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. Low Resolution</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba-PAQM vs. Low Resolution</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AERO vs. Low Resolution</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AudioSR vs. AEROMamba-PAQM</th><td>0.2178</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AERO}$</th><td>0.0007</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AERO}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{Low-Resolution}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{Low-Resolution}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AERO}$ vs. $\textrm{Low-Resolution}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AudioSR}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.2178</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -378,34 +342,34 @@
                             <tr><th scope="col">Comparison</th><th scope="col">p-value</th></tr>
                           </thead>
                           <tbody>
-                            <tr><th scope="row">Low Res vs. AERO</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AERO-HQ</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba</th><td>0.2989</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba-HQ</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba-PAQM</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba-PAQM-HQ</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AudioSR</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AERO vs. AERO-HQ</th><td>0.1077</td></tr>
-                            <tr><th scope="row">AERO vs. AEROMamba</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AERO vs. AEROMamba-HQ</th><td>0.0215</td></tr>
-                            <tr><th scope="row">AERO vs. AEROMamba-PAQM</th><td>0.6028</td></tr>
-                            <tr><th scope="row">AERO vs. AEROMamba-PAQM-HQ</th><td>0.6917</td></tr>
-                            <tr><th scope="row">AERO vs. AudioSR</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AERO-HQ vs. AEROMamba</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AERO-HQ vs. AEROMamba-HQ</th><td>0.0002</td></tr>
-                            <tr><th scope="row">AERO-HQ vs. AEROMamba-PAQM</th><td>0.2574</td></tr>
-                            <tr><th scope="row">AERO-HQ vs. AEROMamba-PAQM-HQ</th><td>0.2083</td></tr>
-                            <tr><th scope="row">AERO-HQ vs. AudioSR</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-HQ</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-PAQM</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-PAQM-HQ</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AudioSR</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba-HQ vs. AEROMamba-PAQM</th><td>0.1172</td></tr>
-                            <tr><th scope="row">AEROMamba-HQ vs. AEROMamba-PAQM-HQ</th><td>0.0806</td></tr>
-                            <tr><th scope="row">AEROMamba-HQ vs. AudioSR</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba-PAQM vs. AEROMamba-PAQM-HQ</th><td>0.8168</td></tr>
-                            <tr><th scope="row">AEROMamba-PAQM vs. AudioSR</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba-PAQM-HQ vs. AudioSR</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AERO}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AERO-HQ}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}$</th><td>0.2989</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}-{\textrm{HQ}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Resolution}$ vs. $\textrm{AudioSR}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AERO}$ vs. $\textrm{AERO-HQ}$</th><td>0.1077</td></tr>
+                            <tr><th scope="row">$\textrm{AERO}$ vs. $\textrm{AEROMamba}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AERO}$ vs. $\textrm{AEROMamba}-{\textrm{HQ}}$</th><td>0.0215</td></tr>
+                            <tr><th scope="row">$\textrm{AERO}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.6028</td></tr>
+                            <tr><th scope="row">$\textrm{AERO}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>0.6917</td></tr>
+                            <tr><th scope="row">$\textrm{AERO}$ vs. $\textrm{AudioSR}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AERO-HQ}$ vs. $\textrm{AEROMamba}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AERO-HQ}$ vs. $\textrm{AEROMamba}-{\textrm{HQ}}$</th><td>0.0002</td></tr>
+                            <tr><th scope="row">$\textrm{AERO-HQ}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.2574</td></tr>
+                            <tr><th scope="row">$\textrm{AERO-HQ}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>0.2083</td></tr>
+                            <tr><th scope="row">$\textrm{AERO-HQ}$ vs. $\textrm{AudioSR}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}-{\textrm{HQ}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AudioSR}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}-{\textrm{HQ}}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.1172</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}-{\textrm{HQ}}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>0.0806</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}-{\textrm{HQ}}$ vs. $\textrm{AudioSR}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$</th><td>0.8168</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AudioSR}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}-\textrm{HQ}$ vs. $\textrm{AudioSR}$</th><td>&lt; 0.0001</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -423,15 +387,15 @@
           <p class="subtitle is-6 has-text-centered">Tracks upsampled from 11.025kHz to 44.1kHz</p>
           <div class="table-container">
             <table class="table is-fullwidth has-text-centered is-vcentered">
-              <caption>Audio samples comparing Low-Res, High-Res (Ground Truth), AERO, AEROMamba, and AEROMamba-PAQM.</caption>
+              <caption>Audio samples comparing $\textrm{Low-Resolution}$, $\textrm{Original (High-Res)}$, $\textrm{AERO}$, $\textrm{AEROMamba}$, and $\textrm{AEROMamba}_{\textrm{P}}$.</caption>
               <thead>
                 <tr>
                   <th class="has-text-left" scope="col">Track</th>
-                  <th scope="col">Original (Low-Res)<br><small>11.025 kHz</small></th>
-                  <th scope="col">Original (High-Res)<br><small>44.1 kHz</small></th>
-                  <th scope="col">AERO<br><small>11.025 &rarr; 44.1 kHz</small></th>
-                  <th scope="col">AEROMamba<br><small>11.025 &rarr; 44.1 kHz</small></th>
-                  <th scope="col">AEROMamba-PAQM<br><small>11.025 &rarr; 44.1 kHz</small></th>
+                  <th scope="col">Original ($\textrm{Low-Res}$)<br><small>11.025 kHz</small></th>
+                  <th scope="col">Original ($\textrm{High-Res}$)<br><small>44.1 kHz</small></th>
+                  <th scope="col">$\textrm{AERO}$<br><small>11.025 &rarr; 44.1 kHz</small></th>
+                  <th scope="col">$\textrm{AEROMamba}$<br><small>11.025 &rarr; 44.1 kHz</small></th>
+                  <th scope="col">$\textrm{AEROMamba}_{\textrm{P}}$<br><small>11.025 &rarr; 44.1 kHz</small></th>
                 </tr>
               </thead>
               <tbody>
@@ -478,7 +442,7 @@
       <div class="container is-max-desktop">
         <div class="columns is-centered has-text-centered">
           <div class="column is-four-fifths">
-            <h2 class="title is-3">Results: Super-resolution of Heavily Compressed Audio</h2>
+            <h2 class="title is-3">Results: Enhancement of Heavily Compressed Audio</h2>
             
             <div class="content has-text-justified">
               <p>Objective and subjective scores for low-bitrate (MP3 32kbps) signals and various models evaluated on MUSDB and PianoEval.</p>
@@ -498,30 +462,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">Low-Bitrate</th>
-                          <td>1.80</td>
-                          <td>2.02</td>
-                          <td>50.7</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">AEROMamba</th>
-                          <td>2.45</td>
-                          <td>1.24</td>
-                          <td>49.8</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">AEROMamba-PAQM</th>
-                          <td>2.99</td>
-                          <td>1.27</td>
-                          <td>49.7</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">AEROMamba-PAQM++</th>
-                          <td>2.90</td>
-                          <td>1.23</td>
-                          <td><b>75.6</b></td>
-                        </tr>
+                        <tr><th scope="row">$\textrm{Low-Bitrate}$</th><td>1.80</td><td>2.02</td><td>50.7</td></tr>
+                        <tr><th scope="row">$\textrm{AEROMamba}$</th><td>2.45</td><td>1.24</td><td>49.8</td></tr>
+                        <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$</th><td>2.99</td><td>1.27</td><td>49.7</td></tr>
+                        <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>2.90</td><td>1.23</td><td><b>75.6</b></td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -541,30 +485,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <th scope="row">Low-Bitrate</th>
-                          <td>4.35</td>
-                          <td>2.33</td>
-                          <td>69.5</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">AEROMamba</th>
-                          <td>4.22</td>
-                          <td>1.14</td>
-                          <td>83.4</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">AEROMamba-PAQM</th>
-                          <td>4.24</td>
-                          <td>1.12</td>
-                          <td>84.1</td>
-                        </tr>
-                        <tr>
-                          <th scope="row">AEROMamba-PAQM++</th>
-                          <td>4.41</td>
-                          <td>1.13</td>
-                          <td><b>85.5</b></td>
-                        </tr>
+                        <tr><th scope="row">$\textrm{Low-Bitrate}$</th><td>4.35</td><td>2.33</td><td>69.5</td></tr>
+                        <tr><th scope="row">$\textrm{AEROMamba}$</th><td>4.22</td><td>1.14</td><td>83.4</td></tr>
+                        <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$</th><td>4.24</td><td>1.12</td><td>84.1</td></tr>
+                        <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>4.41</td><td>1.13</td><td><b>85.5</b></td></tr>
                       </tbody>
                     </table>
                   </div>
@@ -578,7 +502,7 @@
                   <figure class="image">
                     <img src="static/images/subjective_mp3_musdb.png" alt="Violin plot of subjective scores for the MUSDB compressed experiment.">
                     <figcaption class="is-size-7 pt-2">
-                      (A) Low-Bit. (B) AEROMamba (C) AEROMamba-PAQM (D) AEROMamba-PAQM++
+                      (A) $\textrm{Low-Bitrate}$. (B) $\textrm{AEROMamba}$ (C) $\textrm{AEROMamba}_{\textrm{P}}$ (D) $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$
                     </figcaption>
                   </figure>
                 </div>
@@ -587,7 +511,7 @@
                   <figure class="image">
                     <img src="static/images/subjective_mp3_piano.png" alt="Violin plot of subjective scores for the PianoEval compressed experiment.">
                     <figcaption class="is-size-7 pt-2">
-                      (A) Low-Bit. (B) AEROMamba (C) AEROMamba-PAQM (D) AEROMamba-PAQM++
+                      (A) $\textrm{Low-Bitrate}$. (B) $\textrm{AEROMamba}$ (C) $\textrm{AEROMamba}_{\textrm{P}}$ (D) $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$
                     </figcaption>
                   </figure>
                 </div>
@@ -598,43 +522,21 @@
                 <div class="content pt-4">
                   <p>Pairwise comparisons of <strong>subjective scores</strong> (p-values). Values &lt; 0.05 are considered statistically significant.</p>
                   <div class="columns">
-                    
                     <div class="column is-half">
                       <h4 class="title is-5">MUSDB (Subjective)</h4>
                       <div class="table-container">
                         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                           <caption>MUSDB pairwise p-values (MP3)</caption>
                           <thead>
-                            <tr>
-                              <th scope="col">Comparison</th>
-                              <th scope="col">p-value</th>
-                            </tr>
+                            <tr><th scope="col">Comparison</th><th scope="col">p-value</th></tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba</th>
-                              <td>0.7390</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba-PAQM</th>
-                              <td>0.8233</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba-PAQM++</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba vs. AEROMamba-PAQM</th>
-                              <td>0.8751</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba vs. AEROMamba-PAQM++</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba-PAQM vs. AEROMamba-PAQM++</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}$</th><td>0.7390</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.8233</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.8751</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -646,36 +548,15 @@
                         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                           <caption>PianoEval pairwise p-values (MP3)</caption>
                           <thead>
-                            <tr>
-                              <th scope="col">Comparison</th>
-                              <th scope="col">p-value</th>
-                            </tr>
+                            <tr><th scope="col">Comparison</th><th scope="col">p-value</th></tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba-PAQM</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">Low Res vs. AEROMamba-PAQM++</th>
-                              <td>&lt; 0.0001</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba vs. AEROMamba-PAQM</th>
-                              <td>0.9193</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba vs. AEROMamba-PAQM++</th>
-                              <td>0.7168</td>
-                            </tr>
-                            <tr>
-                              <th scope="row">AEROMamba-PAQM vs. AEROMamba-PAQM++</th>
-                              <td>0.7034</td>
-                            </tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.9193</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>0.7168</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>0.7034</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -694,12 +575,12 @@
                             <tr><th scope="col">Comparison</th><th scope="col">p-value</th></tr>
                           </thead>
                           <tbody>
-                            <tr><th scope="row">Low Res vs. AEROMamba</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba-PAQM</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba-PAQM++</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-PAQM</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-PAQM++</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba-PAQM vs. AEROMamba-PAQM++</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -713,12 +594,12 @@
                             <tr><th scope="col">Comparison</th><th scope="col">p-value</th></tr>
                           </thead>
                           <tbody>
-                            <tr><th scope="row">Low Res vs. AEROMamba</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba-PAQM</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">Low Res vs. AEROMamba-PAQM++</th><td>0.0052</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-PAQM</th><td>0.3122</td></tr>
-                            <tr><th scope="row">AEROMamba vs. AEROMamba-PAQM++</th><td>&lt; 0.0001</td></tr>
-                            <tr><th scope="row">AEROMamba-PAQM vs. AEROMamba-PAQM++</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{Low-Bitrate}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>0.0052</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P}}$</th><td>0.3122</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
+                            <tr><th scope="row">$\textrm{AEROMamba}_{\textrm{P}}$ vs. $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th><td>&lt; 0.0001</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -732,19 +613,19 @@
         </div>
 
         <div class="container is-max-desktop pt-6"> 
-          <h3 class="title is-4 has-text-centered">Audio Examples: MUSDB</h3>
+          <h3 class="title is-4 has-text-centered">Audio Examples: MUSDB (Compressed)</h3>
           <p class="subtitle is-6 has-text-centered">Tracks restored from 32kbps MP3 to 44.1kHz</p>
           <div class="table-container">
             <table class="table is-fullwidth has-text-centered is-vcentered">
-              <caption>Audio samples comparing Low-Bitrate (MP3), High-Res (Ground Truth), and AEROMamba variants.</caption>
+              <caption>Audio samples comparing $\textrm{Low-Bitrate}$, $\textrm{Original (High-Res)}$, $\textrm{AEROMamba}$, $\textrm{AEROMamba}_{\textrm{P}}$, and $\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$.</caption>
               <thead>
                 <tr>
                   <th class="has-text-left" scope="col">Track</th>
                   <th scope="col">Low-Bitrate<br><small>MP3 32kbps</small></th>
                   <th scope="col">High-Res<br><small>44.1 kHz</small></th>
-                  <th scope="col">AEROMamba</th>
-                  <th scope="col">AEROMamba-PAQM</th>
-                  <th scope="col">AEROMamba-PAQM++</th>
+                  <th scope="col">$\textrm{AEROMamba}$</th>
+                  <th scope="col">$\textrm{AEROMamba}_{\textrm{P}}$</th>
+                  <th scope="col">$\textrm{AEROMamba}_{\textrm{P} \bar{\textrm{S}}}$</th>
                 </tr>
               </thead>
               <tbody>
@@ -787,6 +668,52 @@
       </div>
     </section>
 
+  <section class="section hero is-light">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <h2 class="title is-3 has-text-centered">Extra: Super-resolution of Degraded Historical Recordings</h2>
+          <p>Super-resolution of Alfred Cortot's historical piano recordings. This section showcases the difference between the predictions of super-resolution of bandlimited audio models when trained with noisy or only high-quality recordings. The input tracks contain much more noise than any of the training data from both HQ and non-HQ datasets.</p>
+          
+          <div class="table-container">
+            <table class="table is-fullwidth has-text-centered is-vcentered">
+              <caption>Historical recordings from 1925 and 1942 processed through various model configurations.</caption>
+              <thead>
+                <tr>
+                  <th class="has-text-left">Recording</th>
+                  <th>Low Resolution</th>
+                  <th>High Resolution</th>
+                  <th>$\textrm{AEROMamba}$</th>
+                  <th>$\textrm{AEROMamba}\text{-}\textrm{HQ}$</th>
+                  <th>$\textrm{AEROMamba}_{\textrm{P}}$</th>
+                  <th>$\textrm{AEROMamba}_{\textrm{P}}\text{-}\textrm{HQ}$</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row" class="has-text-left">Cortot (1925)</th>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1925/Track 24_005_lr.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1925/Track 24_005_original.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1925/Track 24_005_aeromamba.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1925/Track 24_005_aeromamba_hq.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1925/Track 24_005_aeromambap.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1925/Track 24_005_aeromambap_hq.wav" type="audio/wav"></audio></td>
+                </tr>
+                <tr>
+                  <th scope="row" class="has-text-left">Cortot (1942)</th>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1942/Track24_005_lr.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1942/Track24_005_original.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1942/Track24_005_aeromamba.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1942/Track24_005_aeromamba_hq.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1942/Track24_005_aeromambap.wav" type="audio/wav"></audio></td>
+                  <td><audio controls class="audio-player"><source src="static/audios/cortot/1942/Track24_005_aeromambap_hq.wav" type="audio/wav"></audio></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section hero is-light">
       <div class="container is-max-desktop">
         <div class="columns is-centered">
@@ -794,67 +721,59 @@
             <details>
               <summary class="title is-3 has-text-centered" style="cursor: pointer;">PianoEval Dataset Metadata</summary>
               <div class="content has-text-justified pt-4">
-                <p>We collected the PianoEval data set, which consists of two parts. The first is composed of the 24 Preludes for Piano, op. 28, by Chopin performed by 33 pianists in 45 different recordings available on CD (Compact Disc), totaling approximately 22 hours. The second part contains excerpts of Ligeti piano études, a Schumann sonata, and the Barber sonata, played by three different performers, respectively, totaling approximately 3.5 hours. Each file is stored in WAV format, stereo mode and sampled at 44.1 kHz. Information about performers, record label and year of recording are detailed in the Tables below.</p>
+                <p>The collected PianoEval dataset consists of two parts. The first is composed of the 24 Preludes for Piano, op. 28, by Chopin performed by 33 pianists in 45 different recordings available on CD (Compact Disc), totaling approximately 22 hours. The second part contains excerpts of Ligeti piano études, a Schumann sonata, and the Barber sonata, played by three different performers, respectively, totaling approximately 3.5 hours. Information about performers, record label and year of recording are detailed in the tables below.</p>
                 <div class="columns is-multiline">
-                  
                   <div class="column is-half">
                     <h3 class="title is-4">Train/Validation</h3>
                     <div class="table-container">
                       <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                         <caption>Train/Validation split for PianoEval dataset</caption>
-                        <thead>
-                          <tr>
-                            <th scope="col">Pianist</th>
-                            <th scope="col">Record label</th>
-                            <th scope="col">Year</th>
-                          </tr>
-                        </thead>
+                        <thead><tr><th>Pianist</th><th>Label</th><th>Year</th></tr></thead>
                         <tbody>
-                          <tr><th scope="row">Arrau, C.</th><td>Columbia</td><td>1950/1</td></tr>
-                          <tr><th scope="row">Arrau, C.</th><td>Philips</td><td>1973</td></tr>
-                          <tr><th scope="row">Argerich, M.</th><td>Deutsche Grammophon</td><td>1975</td></tr>
-                          <tr><th scope="row">Ashkenazy, V.</th><td>Decca</td><td>1976</td></tr>
-                          <tr><th scope="row">Ashkenazy, V.</th><td>Decca</td><td>1992</td></tr>
-                          <tr><th scope="row">Bolet, J.</th><td>RCA</td><td>1974</td></tr>
-                          <tr><th scope="row">Blechacz, R.</th><td>Deutsche Grammophon</td><td>2007</td></tr>
-                          <tr><th scope="row">Cherkassky, S.</th><td>ASV</td><td>1968</td></tr>
-                          <tr><th scope="row">Cortot, A.</th><td>HMV</td><td>1926</td></tr>
-                          <tr><th scope="row">Cortot, A.</th><td>HMV</td><td>1933/4</td></tr>
-                          <tr><th scope="row">Cortot, A.</th><td>Gramophone</td><td>1942</td></tr>
-                          <tr><th scope="row">Cortot, A.</th><td>Archipel [live]</td><td>1955</td></tr>
-                          <tr><th scope="row">Cortot, A.</th><td>EMI</td><td>1957</td></tr>
-                          <tr><th scope="row">Davidovich, B.</th><td>Decca</td><td>1979</td></tr>
-                          <tr><th scope="row">de Larrocha, A.</th><td>Decca</td><td>1974</td></tr>
-                          <tr><th scope="row">Duchable, F.</th><td>Erato</td><td>1988</td></tr>
-                          <tr><th scope="row">Dutra, G.</th><td>Yellow Tail</td><td>1997</td></tr>
-                          <tr><th scope="row">El Bacha, A. R.</th><td>Forlane</td><td>1999</td></tr>
-                          <tr><th scope="row">François, S.</th><td>EMI</td><td>1959</td></tr>
-                          <tr><th scope="row">Freire, N.</th><td>Columbia</td><td>1970</td></tr>
-                          <tr><th scope="row">Harasiewicz, A.</th><td>Philips</td><td>1963</td></tr>
-                          <tr><th scope="row">Katsaris, C.</th><td>Sony</td><td>1992</td></tr>
-                          <tr><th scope="row">Kissin, Y.</th><td>RCA</td><td>1999</td></tr>
-                          <tr><th scope="row">Lima, A. M.</th><td>Caras<sup>1</sup></td><td>1981</td></tr>
-                          <tr><th scope="row">Lucchesini, A.</th><td>EMI</td><td>1988<sup>2</sup></td></tr>
-                          <tr><th scope="row">Magaloff, N.</th><td>Philips</td><td>1975</td></tr>
-                          <tr><th scope="row">Novaes, G.</th><td>Music and Arts [live]</td><td>1949</td></tr>
-                          <tr><th scope="row">Ohlsson, G.</th><td>EMI</td><td>1974</td></tr>
-                          <tr><th scope="row">Ohlsson, G.</th><td>Hyperion</td><td>1989</td></tr>
-                          <tr><th scope="row">Perahia, M.</th><td>Columbia</td><td>1975</td></tr>
-                          <tr><th scope="row">Petri, E.</th><td>Columbia</td><td>1942</td></tr>
-                          <tr><th scope="row">Pires, M.</th><td>Erato</td><td>1975</td></tr>
-                          <tr><th scope="row">Pires, M.</th><td>Deutsche Grammophon</td><td>1992</td></tr>
-                          <tr><th scope="row">Pogorelich, I.</th><td>Deutsche Grammophon</td><td>1989</td></tr>
-                          <tr><th scope="row">Pollini, M.</th><td>Deutsche Grammophon</td><td>1974</td></tr>
-                          <tr><th scope="row">Pollini, M.</th><td>Deutsche Grammophon</td><td>2011</td></tr>
-                          <tr><th scope="row">Proença, M.</th><td>Delphos</td><td>1999</td></tr>
-                          <tr><th scope="row">Rubinstein, A.</th><td>RCA</td><td>1946</td></tr>
-                          <tr><th scope="row">Switala, W.</th><td>NIFC</td><td>2006/7</td></tr>
-                          <tr><th scope="row">Tiempo, S.</th><td>Victor</td><td>1990</td></tr>
-                          <tr><th scope="row">Varsi, D.</th><td>Genuin</td><td>1988</td>
+                          <tr><th>Arrau, C.</th><td>Columbia</td><td>1950/1</td></tr>
+                          <tr><th>Arrau, C.</th><td>Philips</td><td>1973</td></tr>
+                          <tr><th>Argerich, M.</th><td>DG</td><td>1975</td></tr>
+                          <tr><th>Ashkenazy, V.</th><td>Decca</td><td>1976</td></tr>
+                          <tr><th>Ashkenazy, V.</th><td>Decca</td><td>1992</td></tr>
+                          <tr><th>Bolet, J.</th><td>RCA</td><td>1974</td></tr>
+                          <tr><th>Blechacz, R.</th><td>DG</td><td>2007</td></tr>
+                          <tr><th>Cherkassky, S.</th><td>ASV</td><td>1968</td></tr>
+                          <tr><th>Cortot, A.</th><td>HMV</td><td>1926</td></tr>
+                          <tr><th>Cortot, A.</th><td>HMV</td><td>1933/4</td></tr>
+                          <tr><th>Cortot, A.</th><td>Gramophone</td><td>1942</td></tr>
+                          <tr><th>Cortot, A.</th><td>Archipel</td><td>1955</td></tr>
+                          <tr><th>Cortot, A.</th><td>EMI</td><td>1957</td></tr>
+                          <tr><th>Davidovich, B.</th><td>Decca</td><td>1979</td></tr>
+                          <tr><th>de Larrocha, A.</th><td>Decca</td><td>1974</td></tr>
+                          <tr><th>Duchable, F.</th><td>Erato</td><td>1988</td></tr>
+                          <tr><th>Dutra, G.</th><td>Yellow Tail</td><td>1997</td></tr>
+                          <tr><th>El Bacha, A. R.</th><td>Forlane</td><td>1999</td></tr>
+                          <tr><th>François, S.</th><td>EMI</td><td>1959</td></tr>
+                          <tr><th>Freire, N.</th><td>Columbia</td><td>1970</td></tr>
+                          <tr><th>Harasiewicz, A.</th><td>Philips</td><td>1963</td></tr>
+                          <tr><th>Katsaris, C.</th><td>Sony</td><td>1992</td></tr>
+                          <tr><th>Kissin, Y.</th><td>RCA</td><td>1999</td></tr>
+                          <tr><th>Lima, A. M.</th><td>Caras</td><td>1981</td></tr>
+                          <tr><th>Lucchesini, A.</th><td>EMI</td><td>1988</td></tr>
+                          <tr><th>Magaloff, N.</th><td>Philips</td><td>1975</td></tr>
+                          <tr><th>Novaes, G.</th><td>M&A</td><td>1949</td></tr>
+                          <tr><th>Ohlsson, G.</th><td>EMI</td><td>1974</td></tr>
+                          <tr><th>Ohlsson, G.</th><td>Hyperion</td><td>1989</td></tr>
+                          <tr><th>Perahia, M.</th><td>Columbia</td><td>1975</td></tr>
+                          <tr><th>Petri, E.</th><td>Columbia</td><td>1942</td></tr>
+                          <tr><th>Pires, M.</th><td>Erato</td><td>1975</td></tr>
+                          <tr><th>Pires, M.</th><td>DG</td><td>1992</td></tr>
+                          <tr><th>Pogorelich, I.</th><td>DG</td><td>1989</td></tr>
+                          <tr><th>Pollini, M.</th><td>DG</td><td>1974</td></tr>
+                          <tr><th>Pollini, M.</th><td>DG</td><td>2011</td></tr>
+                          <tr><th>Proença, M.</th><td>Delphos</td><td>1999</td></tr>
+                          <tr><th>Rubinstein, A.</th><td>RCA</td><td>1946</td></tr>
+                          <tr><th>Switala, W.</th><td>NIFC</td><td>2006/7</td></tr>
+                          <tr><th>Tiempo, S.</th><td>Victor</td><td>1990</td></tr>
+                          <tr><th>Varsi, D.</th><td>Genuin</td><td>1988</td></tr>
                         </tbody>
                       </table>
                     </div>
-                    <p class="is-size-7 pt-2"><sup>1</sup> Refers to a magazine.<br><sup>2</sup> Refers to the release year, not the recording year.</p>
                   </div>
 
                   <div class="column is-half"> 
@@ -862,17 +781,11 @@
                       <div class="table-container">
                         <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                           <caption>Test split for PianoEval dataset</caption>
-                          <thead>
-                            <tr>
-                              <th scope="col">Pianist</th>
-                              <th scope="col">Record label</th>
-                              <th scope="col">Year</th>
-                            </tr>
-                          </thead>
+                          <thead><tr><th>Pianist</th><th>Label</th><th>Year</th></tr></thead>
                           <tbody>
-                            <tr><th scope="row">B. Glemser</th><td>Naxos</td><td>1993</td></tr>
-                            <tr><th scope="row">D. Pollack</th><td>Naxos</td><td>1995</td></tr>
-                            <tr><th scope="row">P. L. Aimard</th><td>Sony</td><td>1995</td></tr>
+                            <tr><th>B. Glemser</th><td>Naxos</td><td>1993</td></tr>
+                            <tr><th>D. Pollack</th><td>Naxos</td><td>1995</td></tr>
+                            <tr><th>P. L. Aimard</th><td>Sony</td><td>1995</td></tr>
                           </tbody>
                         </table>
                       </div>
@@ -893,91 +806,28 @@
               <summary class="title is-3 has-text-centered" style="cursor: pointer;">Subjective Test Tracklist</summary>
               <div class="content has-text-justified pt-4">
                 <p>The following table maps the Question IDs (QID) used during the subjective listening tests to the corresponding audio tracks from the MUSDB and PianoEval datasets.</p>
-
                 <div class="table-container">
                   <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
                     <caption>Question IDs and corresponding track names.</caption>
                     <thead>
                       <tr>
-                        <th scope="col" class="has-text-centered">QID</th>
-                        <th scope="col">Track</th>
-                        <th scope="col" class="has-text-centered">QID</th>
-                        <th scope="col">Track</th>
+                        <th scope="col" class="has-text-centered">QID</th><th scope="col">Track</th>
+                        <th scope="col" class="has-text-centered">QID</th><th scope="col">Track</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td class="has-text-centered">1</td>
-                        <td>electronic01</td>
-                        <td class="has-text-centered">13</td>
-                        <td>electronic02</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">2</td>
-                        <td>rock01</td>
-                        <td class="has-text-centered">14</td>
-                        <td>rock02</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">3</td>
-                        <td>pop01</td>
-                        <td class="has-text-centered">15</td>
-                        <td>pop02</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">4</td>
-                        <td>hiphop01</td>
-                        <td class="has-text-centered">16</td>
-                        <td>hiphop02</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">5</td>
-                        <td>latin01</td>
-                        <td class="has-text-centered">17</td>
-                        <td>reggae01</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">6</td>
-                        <td>other01</td>
-                        <td class="has-text-centered">18</td>
-                        <td>other02</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">7</td>
-                        <td>02Barber</td>
-                        <td class="has-text-centered">19</td>
-                        <td>04Barber</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">8</td>
-                        <td>14Ligeti</td>
-                        <td class="has-text-centered">20</td>
-                        <td>17Ligeti</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">9</td>
-                        <td>05Ligeti</td>
-                        <td class="has-text-centered">21</td>
-                        <td>15Ligeti</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">10</td>
-                        <td>07Barber</td>
-                        <td class="has-text-centered">22</td>
-                        <td>08Barber</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">11</td>
-                        <td>03Schumann</td>
-                        <td class="has-text-centered">23</td>
-                        <td>04Schumann</td>
-                      </tr>
-                      <tr>
-                        <td class="has-text-centered">12</td>
-                        <td>02Schumann</td>
-                        <td class="has-text-centered">24</td>
-                        <td>15Schumann</td>
-                      </tr>
+                      <tr><td class="has-text-centered">1</td><td>electronic01</td><td class="has-text-centered">13</td><td>electronic02</td></tr>
+                      <tr><td class="has-text-centered">2</td><td>rock01</td><td class="has-text-centered">14</td><td>rock02</td></tr>
+                      <tr><td class="has-text-centered">3</td><td>pop01</td><td class="has-text-centered">15</td><td>pop02</td></tr>
+                      <tr><td class="has-text-centered">4</td><td>hiphop01</td><td class="has-text-centered">16</td><td>hiphop02</td></tr>
+                      <tr><td class="has-text-centered">5</td><td>latin01</td><td class="has-text-centered">17</td><td>reggae01</td></tr>
+                      <tr><td class="has-text-centered">6</td><td>other01</td><td class="has-text-centered">18</td><td>other02</td></tr>
+                      <tr><td class="has-text-centered">7</td><td>02Barber</td><td class="has-text-centered">19</td><td>04Barber</td></tr>
+                      <tr><td class="has-text-centered">8</td><td>14Ligeti</td><td class="has-text-centered">20</td><td>17Ligeti</td></tr>
+                      <tr><td class="has-text-centered">9</td><td>05Ligeti</td><td class="has-text-centered">21</td><td>15Ligeti</td></tr>
+                      <tr><td class="has-text-centered">10</td><td>07Barber</td><td class="has-text-centered">22</td><td>08Barber</td></tr>
+                      <tr><td class="has-text-centered">11</td><td>03Schumann</td><td class="has-text-centered">23</td><td>04Schumann</td></tr>
+                      <tr><td class="has-text-centered">12</td><td>02Schumann</td><td class="has-text-centered">24</td><td>15Schumann</td></tr>
                     </tbody>
                   </table>
                 </div>
@@ -988,15 +838,13 @@
       </div>
     </section>
 
-    <footer class="footer">
+  <footer class="footer">
     <div class="container">
       <div class="columns is-centered">
         <div class="column is-8">
           <div class="content">
             <p>
-              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank" rel="noopener noreferrer">Nerfies</a> project page.
-              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative
-              Commons Attribution-ShareAlike 4.0 International License</a>.
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank" rel="noopener noreferrer">Academic Project Page Template</a>. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
             </p>
           </div>
         </div>
